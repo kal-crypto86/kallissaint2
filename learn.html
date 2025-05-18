@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sweet - Cigarettes After Sex</title> 
+  <style>
+   #watermark {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.15); /* warna hitam transparan */
+  pointer-events: none; /* supaya gak ganggu klik */
+  user-select: none;    /* supaya gak bisa diseleksi */
+  font-family: 'Courier New', monospace;
+}
+    body {
+      margin: 0;
+      height: 100vh;
+      /* Background hitam ke putih linear gradient */
+      background: linear-gradient(135deg, black 0%, white 100%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Courier New', monospace;
+    }
+    #container {
+      background-color: rgba(255, 255, 255, 0.85); /* putih transparan supaya teks terlihat */
+      padding: 30px 40px;
+      border-radius: 10px;
+      max-width: 800px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+    h1 {
+      color: black;
+      margin-bottom: 30px;
+    }
+    #output {
+      color: black;
+      white-space: pre-wrap;
+      font-size: 1.2em;
+      line-height: 1.8;
+      margin-bottom: 30px;
+    }
+    audio {
+      width: 100%;
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="watermark">kallisaint</div>
+    <h1>Sweet - Cigarettes After Sex</h1>
+    <div id="output"></div>
+    <audio id="music" controls autoplay loop>
+      <source src="C:\Users\Administrator\OneDrive\Dokumen\punya chikal\Sweet - Cigarettes After Sex.mp3"type="audio/mpeg" />
+      <a href="https://youtu.be/pZ31pyTZdh0?si=p5bTT_AXF60YgtpI">
+    </audio>
+  </div>
+
+  <script>
+    const lines = [
+      "Watching the video that you sent me",
+      "The one where you're showering with wet hair dripping",
+      "You know that I'm obsessed with your body",
+      "But it's the way you smile that does it for me",
+      "",
+      "It's so sweet, knowing that you love me",
+      "Though we don't need to say it to each other, sweet",
+      "Knowing that I love you, and running my fingers through your hair",
+      "It's so sweet",
+      "",
+      "Watching the video where you're lying",
+      "In your red lingerie ten times nightly",
+      "You know I think your skin's the perfect color",
+      "But it's always your eyes that pull me under",
+      "",
+      "It's so sweet knowing that you love me",
+      "Though we don't need to say it to each other, sweet",
+      "Knowing that I love you, and running my fingers through your hair",
+      "It's so sweet",
+      "",
+      "And I would gladly break it",
+      "I would gladly break my heart for you",
+      "And I would gladly break it",
+      "I would gladly break my heart for you",
+      "And I would gladly break it",
+      "I would gladly break my heart for you",
+      "And I would gladly break it",
+      "I would gladly break my heart for you",
+      "",
+      "It's so sweet knowing that you love me",
+      "Though we don't need to say it to each other, sweet",
+      "Knowing that I love you, and running my fingers through your hair",
+      "It's so sweet"
+    ];
+
+    const output = document.getElementById('output');
+    let lineIndex = 0;
+    let charIndex = 0;
+    let delay = 180;   // kecepatan ketikan per huruf
+    let pause = 2000;  // jeda antar baris
+
+    function typeLine() {
+      if (lineIndex >= lines.length) return;
+
+      const currentLine = lines[lineIndex];
+      if (charIndex < currentLine.length) {
+        output.innerHTML += currentLine.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeLine, delay);
+      } else {
+        output.innerHTML += '<br>';
+        lineIndex++;
+        charIndex = 0;
+        setTimeout(typeLine, pause);
+      }
+    }
+
+    setTimeout(typeLine, 2000); // delay awal
+  </script>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>She's Thunderstorms - Arctic Monkeys</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, black, white);
+      background-size: 400% 400%;
+      animation: gradient 15s ease infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Courier New', monospace;
+    }
+
+    @keyframes gradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    #container {
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 30px 40px;
+      border-radius: 10px;
+      max-width: 800px;
+      text-align: center;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    }
+
+    h1 {
+      color: black;
+      margin-bottom: 30px;
+    }
+
+    #output {
+      color: black;
+      font-size: 1.2em;
+      line-height: 1.8;
+      margin-bottom: 30px;
+      white-space: pre-wrap;
+      text-align: left;
+      position: relative;
+    }
+
+    #output::after {
+      content: "|";
+      position: absolute;
+      right: 0;
+      animation: blink 1s steps(2, start) infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease;
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    audio {
+      width: 100%;
+      outline: none;
+    }
+
+    #watermark {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      font-size: 14px;
+      color: rgba(0, 0, 0, 0.15);
+      pointer-events: none;
+      user-select: none;
+      font-family: 'Courier New', monospace;
+    }
+
+    #footer {
+      font-size: 12px;
+      color: gray;
+      margin-top: 20px;
+    }
+
+    @media (max-width: 600px) {
+      #container {
+        padding: 20px;
+        font-size: 0.9em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="container">
+    <div id="watermark">kallisaint</div>
+    <h1>She's Thunderstorms - Arctic Monkeys</h1>
+    <div id="output"></div>
+    <audio id="music" controls autoplay loop>
+      <source src="C:\Users\Administrator\OneDrive\Dokumen\punya chikal\She's Thunderstorms.mp3" type="audio/mpeg" />
+      Browser tidak mendukung audio.
+    </audio>
+    <div id="footer">Untuk dia yang saya kagumi✨</div>
+  </div>
+
+  <script>
+    const lines = [
+      "",//jeda awal baris kosong
+      "Lying on her front, up against the wall",
+      "She's thunderstorms",
+      "I've been feeling foolish, you should try it",
+      "She came and substituted the peace and quiet for",
+      "Acrobatic blood, flow concertina",
+      "Cheating heartbeat, rapid fire",
+      "She's thunderstorms",
+      "Lying on her front, up against the wall",
+      "She's thunderstorms",
+      "Here is your host, sounds as if she's pretty close",
+      "When the heat starts growing horns",
+      "She's thunderstorms",
+      "She's been loop-the-looping around my mind",
+      "Her motorcycle boots give me this kind of",
+      "Acrobatic blood, concertina",
+      "Cheating heartbeat, rapid fire",
+      "She's thunderstorms",
+      "Lying on her front, up against the wall",
+      "She's thunderstorms",
+      "In an unusual place, when you're feeling far away",
+      "She does what the night does to the day",
+      "She's thunderstorms",
+      "Lying on her front, up against the wall",
+      "She's thunderstorms, thunderstorms, thunderstorms"
+    ];
+
+    const output = document.getElementById('output');
+    let lineIndex = 0;
+    let charIndex = 0;
+    const delay = 50;
+    const pause = 1500;
+
+    function typeLine() {
+      if (lineIndex >= lines.length) return;
+
+      const currentLine = lines[lineIndex];
+      if (charIndex < currentLine.length) {
+        output.innerHTML += currentLine.charAt(charIndex);
+        charIndex++;
+        setTimeout(typeLine, delay);
+      } else {
+        const br = document.createElement("br");
+        const span = document.createElement("span");
+        span.textContent = "";
+        span.className = "fade-in";
+        output.appendChild(br);
+        output.appendChild(span);
+
+        lineIndex++;
+        charIndex = 0;
+        setTimeout(typeLine, pause);
+      }
+    }
+
+    setTimeout(typeLine, 1000);
+  </script>
+</body>
+</html>
